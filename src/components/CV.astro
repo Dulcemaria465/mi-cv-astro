@@ -5,9 +5,7 @@
     <div class="profile-section">
       <img src="https://ui-avatars.com/api/?name=Dulce+Del+Angel&background=6b7280&color=fff&size=200" alt="Dulce Maria Del Angel Del Angel" class="profile-image" />
       <h1 class="name">Dulce Maria Del Angel Del Angel</h1>
-      <button class="download-btn" onclick="window.open('/cv-dulce.pdf', '_blank')">
-       Descargar CV en PDF
-      </button>
+      
       <div class="personal-info">
         <div class="info-item">
           <span class="info-label">Edad:</span>
@@ -89,6 +87,14 @@
           </a>
       </div>
     </div>
+
+    <!-- Botón de descarga CV -->
+    <div class="download-section">
+      <a href="https://dulcecv.tech/" download target="_blank" class="download-btn">
+        📥 Descargar CV
+      </a>
+    </div>
+
   </div>
 
   <div class="right-column">
@@ -327,6 +333,28 @@
   .github { background: #333; }
   .vscode { background: #0078d7; }
   .figma { background: #f24e1e; }
+
+  /* Estilo botón CV */
+  .download-section {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .download-btn {
+    display: inline-block;
+    background: #6b7280;
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+  }
+
+  .download-btn:hover {
+    background: #4b5563;
+  }
+
   @media (max-width: 768px) {
     .resume-container { grid-template-columns: 1fr; gap: 30px; }
     .name { font-size: 2rem; }
