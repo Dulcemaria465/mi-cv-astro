@@ -11,7 +11,7 @@ const personalInfo = {
 };
 
 const estudios = [
-  { carrera: "Ingeniería en Sistemas Computacionales", institucion: "UAT", periodo: "2025 - Presente" },
+  { carrera: "Ingeniería en Sistemas Computacionales", institucion: "UAT", periodo: "2023 - Presente" },
   { carrera: "Técnico en Programación", institucion: "ITACE", periodo: "2020 - 2023" }
 ];
 
@@ -23,19 +23,21 @@ const certificados = [
 ];
 
 const habilidadesTecnicas = [
+  { nombre: "Python", icon: "Py", rating: 3 },
   { nombre: "JavaScript", icon: "JS", rating: 3 },
   { nombre: "HTML/CSS", icon: "HTML", rating: 3 },
   { nombre: "Java", icon: "Java", rating: 3 },
   { nombre: "PHP", icon: "PHP", rating: 3 },
   { nombre: "Astro", icon: "Astro", rating: 3 },
-  { nombre: "React", icon: "Re", rating: 3 },
-  { nombre: "Laravel", icon: "Lv", rating: 3 },
-  { nombre: "MySQL", icon: "My", rating: 3 },
-  { nombre: "SQL Server", icon: "SS", rating: 3 },
-  { nombre: "GitHub", icon: "GH", rating: 3 },
-  { nombre: "VS Code", icon: "VS", rating: 3 },
-  { nombre: "Figma", icon: "Fg", rating: 3 }
+  { nombre: "React", icon: "React", rating: 3 },
+  { nombre: "Laravel", icon: "Laravel", rating: 3 },
+  { nombre: "MySQL", icon: "MySQL", rating: 3 },
+  { nombre: "SQL Server", icon: "SQLServer", rating: 3 },
+  { nombre: "GitHub", icon: "GitHub", rating: 3 },
+  { nombre: "VS Code", icon: "VSCode", rating: 3 },
+  { nombre: "Figma", icon: "Figma", rating: 3 }
 ];
+
 
 const habilidadesBlandas = [
   "Trabajo en equipo",
@@ -175,20 +177,22 @@ body { font-family:'Inter',sans-serif; background:#f5f1eb; color:#4a4a4a; line-h
 .rating-dot{width:10px;height:10px;border-radius:50%;background:#d1d5db;}
 .rating-dot.filled{background:#6b7280;}
 
+/*Colores*/ 
 /* COLORES DE HABILIDADES */
-.py { background: #3776AB; } 
-.java { background: #f89820; } 
-.laravel { background: #ff2d20; } 
-.mysql { background: #00758f; } 
-.sqlserver { background: #a91d22; } 
-.js { background: #f7df1e; color: #222; } 
-.html { background: #e34c26; } 
-.php { background: #777bb4; } 
-.astro { background: #1a1a1a; } 
-.react { background: #61dafb; color: #222; } 
-.github { background: #333; } 
-.vscode { background: #0078d7; } 
+.py { background: #3776AB; }
+.java { background: #f89820; }
+.laravel { background: #ff2d20; }
+.mysql { background: #00758f; }
+.sqlserver { background: #a91d22; }
+.js { background: #f7df1e; color: #222; }
+.html { background: #e34c26; }
+.php { background: #777bb4; }
+.astro { background: #1a1a1a; }
+.react { background: #61dafb; color: #222; }
+.github { background: #333; }
+.vscode { background: #0078d7; }
 .figma { background: #f24e1e; }
+
 
 /* DESCARGAR CV */
 .download-section{text-align:center;}
