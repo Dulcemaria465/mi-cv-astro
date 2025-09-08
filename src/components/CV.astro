@@ -297,6 +297,39 @@
     width: 32px; height: 32px; border-radius: 4px; display: flex; align-items: center;
     justify-content: center; color: white; font-weight: bold; font-size: 12px;
   }
+  .experience-title { font-weight: 600; color: #6b7280; font-size: 1.1rem; margin-bottom: 5px; }
+  .experience-description { color: #9ca3af; font-size: 0.9rem; margin-bottom: 3px; }
+  .experience-date { color: #9ca3af; font-size: 0.8rem; font-style: italic; }
+  .skills-description { color: #9ca3af; font-size: 1rem; margin-top: 30px; line-height: 1.7; }
+  .skills-list { display: flex; flex-direction: column; gap: 15px; }
+  .skill-item { display: flex; align-items: center; gap: 15px; }
+  .skill-icon {
+    width: 32px; height: 32px; border-radius: 4px; display: flex; align-items: center;
+    justify-content: center; color: white; font-weight: bold; font-size: 12px;
+  }
+  .py { background: #3776AB; }
+  .java { background: #f89820; }
+  .laravel { background: #ff2d20; }
+  .mysql { background: #00758f; }
+  .sqlserver { background: #a91d22; }
+  .skill-name { flex: 1; font-weight: 500; color: #6b7280; }
+  .skill-rating { display: flex; gap: 4px; }
+  .rating-dot { width: 12px; height: 12px; border-radius: 50%; background: #d1d5db; }
+  .rating-dot.filled { background: #6b7280; }
+  .js { background: #f7df1e; color: #222; }
+  .html { background: #e34c26; }
+  .php { background: #777bb4; }
+  .astro { background: #1a1a1a; }
+  .react { background: #61dafb; color: #222; }
+  .github { background: #333; }
+  .vscode { background: #0078d7; }
+  .figma { background: #f24e1e; }
+  @media (max-width: 768px) {
+    .resume-container { grid-template-columns: 1fr; gap: 30px; }
+    .name { font-size: 2rem; }
+    .title { font-size: 1.2rem; }
+  }
+
   .download-section {
     text-align: center;
     margin-top: 20px;
