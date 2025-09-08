@@ -254,25 +254,62 @@
 
   .left-column, .right-column { display: flex; flex-direction: column; gap: 40px; }
 
+  /* PERFIL */
   .profile-section { text-align: center; }
-  .profile-image { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; margin: 0 auto 20px; }
+  .profile-image { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; margin: 0 auto 20px; display: block; }
   .name { font-size: 2.5rem; font-weight: 700; color: #6b7280; margin-bottom: 5px; }
   .title { font-size: 1.5rem; font-weight: 300; color: #9ca3af; font-style: italic; }
   .personal-info { display: flex; flex-direction: column; gap: 8px; margin-top: 20px; }
   .info-item { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; }
   .info-label { font-weight: 600; color: #6b7280; min-width: 80px; }
 
+  /* SECCIONES */
   .section-title { font-size: 1.8rem; font-weight: 700; color: #6b7280; margin-bottom: 20px; border-bottom: 2px solid #d1d5db; padding-bottom: 10px; }
   .education-item, .contact-item, .cert-item { margin-bottom: 20px; }
   .education-school { color: #9ca3af; font-size: 0.9rem; }
 
+  /* CONTACTO */
   .contact-item { display: flex; align-items: center; gap: 15px; padding: 10px; background: rgba(255,255,255,0.3); border-radius: 8px; }
   .contact-icon { width: 24px; height: 24px; background: #6b7280; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px; }
 
+  /* CERTIFICADOS */
   .cert-section { display: flex; flex-direction: column; gap: 15px; }
   .cert-item { padding: 10px; border: 1px solid #d1d5db; border-radius: 8px; background: #fff; }
   .cert-item img { width: 120px; margin-top: 10px; }
 
+  /* EXPERIENCIA */
+  .experience-item { margin-bottom: 30px; position: relative; padding-left: 20px; }
+  .experience-item::before { content: ''; position: absolute; left: 0; top: 8px; width: 8px; height: 8px; background: #d4a574; border-radius: 50%; }
+  .experience-title { font-weight: 600; color: #6b7280; font-size: 1.1rem; margin-bottom: 5px; }
+  .experience-description { color: #9ca3af; font-size: 0.9rem; margin-bottom: 3px; }
+  .experience-date { color: #9ca3af; font-size: 0.8rem; font-style: italic; }
+
+  /* HABILIDADES */
+  .skills-description { color: #9ca3af; font-size: 1rem; margin-top: 30px; line-height: 1.7; }
+  .skills-list { display: flex; flex-direction: column; gap: 15px; }
+  .skill-item { display: flex; align-items: center; gap: 15px; }
+  .skill-icon { width: 32px; height: 32px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 12px; }
+  .skill-name { flex: 1; font-weight: 500; color: #6b7280; }
+  .skill-rating { display: flex; gap: 4px; }
+  .rating-dot { width: 12px; height: 12px; border-radius: 50%; background: #d1d5db; }
+  .rating-dot.filled { background: #6b7280; }
+
+  /* COLORES DE HABILIDADES */
+  .py { background: #3776AB; }
+  .java { background: #f89820; }
+  .laravel { background: #ff2d20; }
+  .mysql { background: #00758f; }
+  .sqlserver { background: #a91d22; }
+  .js { background: #f7df1e; color: #222; }
+  .html { background: #e34c26; }
+  .php { background: #777bb4; }
+  .astro { background: #1a1a1a; }
+  .react { background: #61dafb; color: #222; }
+  .github { background: #333; }
+  .vscode { background: #0078d7; }
+  .figma { background: #f24e1e; }
+
+  /* DESCARGA CV */
   .download-section { text-align: center; margin-top: 20px; }
   .download-btn { display: inline-block; background: #6b7280; color: white; font-weight: 600; text-decoration: none; padding: 12px 20px; border-radius: 8px; transition: background 0.3s ease; }
   .download-btn:hover { background: #4b5563; }
