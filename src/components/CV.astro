@@ -1,66 +1,101 @@
+---
+const personalInfo = {
+  nombre: "Dulce Maria Del Angel Del Angel",
+  edad: "20 años",
+  estado: "Tamaulipas",
+  email: "delangeldulce29@gmail.com",
+  telefono: "833 383 5762",
+  facebook: "https://www.facebook.com/share/1ZfsC6Mi8N/",
+  github: "https://github.com/Dulcemaria465",
+  cv: "/CV-Dulce.pdf"
+};
+
+const estudios = [
+  { carrera: "Ingeniería en Sistemas Computacionales", institucion: "UAT", periodo: "2023 - Presente" },
+  { carrera: "Técnico en Programación", institucion: "ITACE", periodo: "2020 - 2023" }
+];
+
+const certificados = [
+  { titulo: "Programador (orientado a objetos)", folio: "a3d59519-86e4-43cd-93fc-fbe9f4e4e017", qr: "/qr-certificado.png" },
+  { titulo: "Diseñador de experiencia de usuario (UX)", folio: "addd7000-1b96-4e4c-a4e4-d5b50d287350", qr: "/qr-certificado2.png" },
+  { titulo: "Desarrollador de interfaces gráficas", folio: "23a00586-833a-47ce-9c17-6146ccd0e0a8", qr: "/qr-certificado3.png" },
+  { titulo: "Evaluador de experiencia de usuario (UX)", folio: "03761b29-ac6e-407c-b263-d5e53cfb84e7", qr: "/qr-certificado4.png" }
+];
+
+const habilidadesTecnicas = [
+  { nombre: "JavaScript", icon: "JS", rating: 3 },
+  { nombre: "HTML/CSS", icon: "HTML", rating: 3 },
+  { nombre: "Java", icon: "Java", rating: 3 },
+  { nombre: "PHP", icon: "PHP", rating: 3 },
+  { nombre: "Astro", icon: "Astro", rating: 3 },
+  { nombre: "React", icon: "Re", rating: 3 },
+  { nombre: "Laravel", icon: "Lv", rating: 3 },
+  { nombre: "MySQL", icon: "My", rating: 3 },
+  { nombre: "SQL Server", icon: "SS", rating: 3 },
+  { nombre: "GitHub", icon: "GH", rating: 3 },
+  { nombre: "VS Code", icon: "VS", rating: 3 },
+  { nombre: "Figma", icon: "Fg", rating: 3 }
+];
+
+const habilidadesBlandas = [
+  "Trabajo en equipo",
+  "Creatividad: Diseño de interfaces atractivas",
+  "Comunicación en equipo",
+  "Capacidad de organización",
+  "Adaptabilidad"
+];
+
+const proyectos = [
+  "Desarrollo de un sistema de punto de venta en JAVA",
+  "Desarrollo de una página web en Laravel (Backend y Frontend)"
+];
+---
+
 <div class="resume-container">
   <!-- COLUMNA IZQUIERDA -->
   <div class="left-column">
     <div class="profile-section">
-      <img src="https://ui-avatars.com/api/?name=Dulce+Del+Angel&background=6b7280&color=fff&size=200" alt="Dulce Maria Del Angel Del Angel" class="profile-image" />
-      <h1 class="name">Dulce Maria Del Angel Del Angel</h1>
+      <img src={`https://ui-avatars.com/api/?name=${personalInfo.nombre.replace(/ /g, '+')}&background=6b7280&color=fff&size=200`} alt={personalInfo.nombre} class="profile-image" />
+      <h1 class="name">{personalInfo.nombre}</h1>
 
       <div class="personal-info">
-        <div class="info-item"><span class="info-label">Edad:</span><span>20 años</span></div>
-        <div class="info-item"><span class="info-label">Estado:</span><span>Tamaulipas</span></div>
+        <div class="info-item"><span class="info-label">Edad:</span><span>{personalInfo.edad}</span></div>
+        <div class="info-item"><span class="info-label">Estado:</span><span>{personalInfo.estado}</span></div>
       </div>
     </div>
 
     <div class="education-section">
       <h3 class="section-title">Recorrido estudiantil</h3>
-      <div class="education-item">
-        <div class="education-school">Ingeniería en Sistemas Computacionales</div>
-        <div class="education-details">UAT | 2023 - Presente</div>
-      </div>
-      <div class="education-item">
-        <div class="education-school">Técnico en Programación</div>
-        <div class="education-details">ITACE | 2020 - 2023</div>
-      </div>
+      {estudios.map(est => (
+        <div class="education-item">
+          <div class="education-school">{est.carrera}</div>
+          <div class="education-details">{est.institucion} | {est.periodo}</div>
+        </div>
+      ))}
     </div>
 
     <div class="cert-section">
       <h3 class="section-title">Certificados</h3>
-      <div class="cert-item">
-        <strong>Programador (orientado a objetos)</strong><br />
-        <span>Folio: a3d59519-86e4-43cd-93fc-fbe9f4e4e017</span><br />
-        <span>Completado y aprobado por Dulce María Del Ángel Del Ángel</span><br />
-        <img src="/qr-certificado.png" alt="Código QR Certificado" />
-      </div>
-      <div class="cert-item">
-        <strong>Diseñador de experiencia de usuario (UX)</strong><br />
-        <span>FOLIO: addd7000-1b96-4e4c-a4e4-d5b50d287350</span><br />
-        <span>Completado y aprobado por Dulce María Del Ángel Del Ángel</span><br />
-        <img src="/qr-certificado2.png" alt="Código QR Certificado" />
-      </div>
-      <div class="cert-item">
-        <strong>Desarrollador de interfaces gráficas</strong><br />
-        <span>FOLIO: 23a00586-833a-47ce-9c17-6146ccd0e0a8</span><br />
-        <span>Completado y aprobado por Dulce María Del Ángel Del Ángel</span><br />
-        <img src="/qr-certificado3.png" alt="Código QR Certificado" />
-      </div>
-      <div class="cert-item">
-        <strong>Evaluador de experiencia de usuario (UX)</strong><br />
-        <span>FOLIO: 03761b29-ac6e-407c-b263-d5e53cfb84e7</span><br />
-        <span>Completado y aprobado por Dulce María Del Ángel Del Ángel</span><br />
-        <img src="/qr-certificado4.png" alt="Código QR Certificado" />
-      </div>
+      {certificados.map(cert => (
+        <div class="cert-item">
+          <strong>{cert.titulo}</strong>
+          <span>Folio: {cert.folio}</span>
+          <span>Completado y aprobado por {personalInfo.nombre}</span>
+          <img src={cert.qr} alt="Código QR Certificado" />
+        </div>
+      ))}
     </div>
 
     <div class="contact-section">
       <h3 class="section-title">Contacto</h3>
-      <div class="contact-item"><div class="contact-icon">@</div><a href="mailto:delangeldulce29@gmail.com">delangeldulce29@gmail.com</a></div>
-      <div class="contact-item"><div class="contact-icon">📞</div><a href="tel:8333835762">833 383 5762</a></div>
-      <div class="contact-item"><div class="contact-icon">FB</div><a href="https://www.facebook.com/share/1ZfsC6Mi8N/">facebook.com/Dulce Maria</a></div>
-      <div class="contact-item"><div class="contact-icon">GH</div><a href="https://github.com/Dulcemaria465">github.com/Dulcemaria465</a></div>
+      <div class="contact-item"><div class="contact-icon">@</div><a href={`mailto:${personalInfo.email}`}>{personalInfo.email}</a></div>
+      <div class="contact-item"><div class="contact-icon">📞</div><a href={`tel:${personalInfo.telefono}`}>{personalInfo.telefono}</a></div>
+      <div class="contact-item"><div class="contact-icon">FB</div><a href={personalInfo.facebook}>facebook.com/Dulce Maria</a></div>
+      <div class="contact-item"><div class="contact-icon">GH</div><a href={personalInfo.github}>github.com/Dulcemaria465</a></div>
     </div>
 
     <div class="download-section">
-      <a href="/CV-Dulce.pdf" download="CV-Dulce.pdf" class="download-btn">📥 Descargar CV</a>
+      <a href={personalInfo.cv} download class="download-btn">📥 Descargar CV</a>
     </div>
   </div>
 
@@ -71,18 +106,13 @@
       <div class="habilidades-tecnicas">
         <strong>Técnicas</strong>
         <ul>
-          <li>Desarrollo de un sistema de punto de venta en JAVA</li>
-          <li>Desarrollo de una página web en Laravel (Backend y Frontend)</li>
+          {proyectos.map(p => <li>{p}</li>)}
         </ul>
       </div>
       <div class="habilidades-blandas">
         <strong>Blandas</strong>
         <ul>
-          <li>Trabajo en equipo</li>
-          <li>Creatividad: Diseño de interfaces atractivas</li>
-          <li>Comunicación en equipo</li>
-          <li>Capacidad de organización</li>
-          <li>Adaptabilidad</li>
+          {habilidadesBlandas.map(h => <li>{h}</li>)}
         </ul>
       </div>
     </div>
@@ -90,18 +120,17 @@
     <div class="skills-section">
       <h3 class="section-title">Habilidades Técnicas</h3>
       <div class="skills-list">
-        <div class="skill-item"><div class="skill-icon js">JS</div><div class="skill-name">JavaScript</div><div class="skill-rating"><div class="rating-dot filled"></div><div class="rating-dot filled"></div><div class="rating-dot filled"></div><div class="rating-dot"></div><div class="rating-dot"></div></div></div>
-        <div class="skill-item"><div class="skill-icon html">HTML</div><div class="skill-name">HTML/CSS</div><div class="skill-rating"><div class="rating-dot filled"></div><div class="rating-dot filled"></div><div class="rating-dot filled"></div><div class="rating-dot"></div><div class="rating-dot"></div></div></div>
-        <div class="skill-item"><div class="skill-icon java">Java</div><div class="skill-name">Java</div><div class="skill-rating"><div class="rating-dot filled"></div><div class="rating-dot filled"></div><div class="rating-dot filled"></div><div class="rating-dot"></div><div class="rating-dot"></div></div></div>
-        <div class="skill-item"><div class="skill-icon php">PHP</div><div class="skill-name">PHP</div><div class="skill-rating"><div class="rating-dot filled"></div><div class="rating-dot filled"></div><div class="rating-dot filled"></div><div class="rating-dot"></div><div class="rating-dot"></div></div></div>
-        <div class="skill-item"><div class="skill-icon astro">Astro</div><div class="skill-name">Astro</div><div class="skill-rating"><div class="rating-dot filled"></div><div class="rating-dot filled"></div><div class="rating-dot filled"></div><div class="rating-dot"></div><div class="rating-dot"></div></div></div>
-        <div class="skill-item"><div class="skill-icon react">Re</div><div class="skill-name">React</div><div class="skill-rating"><div class="rating-dot filled"></div><div class="rating-dot filled"></div><div class="rating-dot filled"></div><div class="rating-dot"></div><div class="rating-dot"></div></div></div>
-        <div class="skill-item"><div class="skill-icon laravel">Lv</div><div class="skill-name">Laravel</div><div class="skill-rating"><div class="rating-dot filled"></div><div class="rating-dot filled"></div><div class="rating-dot filled"></div><div class="rating-dot"></div><div class="rating-dot"></div></div></div>
-        <div class="skill-item"><div class="skill-icon mysql">My</div><div class="skill-name">MySQL</div><div class="skill-rating"><div class="rating-dot filled"></div><div class="rating-dot filled"></div><div class="rating-dot filled"></div><div class="rating-dot"></div><div class="rating-dot"></div></div></div>
-        <div class="skill-item"><div class="skill-icon sqlserver">SS</div><div class="skill-name">SQL Server</div><div class="skill-rating"><div class="rating-dot filled"></div><div class="rating-dot filled"></div><div class="rating-dot filled"></div><div class="rating-dot"></div><div class="rating-dot"></div></div></div>
-        <div class="skill-item"><div class="skill-icon github">GH</div><div class="skill-name">GitHub</div><div class="skill-rating"><div class="rating-dot filled"></div><div class="rating-dot filled"></div><div class="rating-dot filled"></div><div class="rating-dot"></div><div class="rating-dot"></div></div></div>
-        <div class="skill-item"><div class="skill-icon vscode">VS</div><div class="skill-name">VS Code</div><div class="skill-rating"><div class="rating-dot filled"></div><div class="rating-dot filled"></div><div class="rating-dot filled"></div><div class="rating-dot"></div><div class="rating-dot"></div></div></div>
-        <div class="skill-item"><div class="skill-icon figma">Fg</div><div class="skill-name">Figma</div><div class="skill-rating"><div class="rating-dot filled"></div><div class="rating-dot filled"></div><div class="rating-dot filled"></div><div class="rating-dot"></div><div class="rating-dot"></div></div></div>
+        {habilidadesTecnicas.map(skill => (
+          <div class="skill-item">
+            <div class={`skill-icon ${skill.icon.toLowerCase()}`}>{skill.icon}</div>
+            <div class="skill-name">{skill.nombre}</div>
+            <div class="skill-rating">
+              {Array.from({ length: 5 }, (_, i) => (
+                <div class={`rating-dot ${i < skill.rating ? "filled" : ""}`}></div>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   </div>
@@ -112,15 +141,7 @@
 body { font-family:'Inter',sans-serif; background:#f5f1eb; color:#4a4a4a; line-height:1.6; }
 
 /* CONTENEDOR PRINCIPAL */
-.resume-container {
-  max-width:1200px;
-  margin:auto;
-  padding:40px 20px;
-  display:grid;
-  grid-template-columns:1fr 2fr;
-  gap:50px;
-}
-
+.resume-container { max-width:1200px; margin:auto; padding:40px 20px; display:grid; grid-template-columns:1fr 2fr; gap:50px; }
 .left-column, .right-column { display:flex; flex-direction:column; gap:30px; }
 
 /* PERFIL */
