@@ -16,206 +16,183 @@ const estudios = [
 ];
 
 const certificados = [
-  { titulo: "Programador (orientado a objetos)", folio: "a3d59519-86e4-43cd-93fc-fbe9f4e4e017" },
-  { titulo: "Diseñador de experiencia de usuario (UX)", folio: "addd7000-1b96-4e4c-a4e4-d5b50d287350" },
-  { titulo: "Desarrollador de interfaces gráficas", folio: "23a00586-833a-47ce-9c17-6146ccd0e0a8" },
-  { titulo: "Evaluador de experiencia de usuario (UX)", folio: "03761b29-ac6e-407c-b263-d5e53cfb84e7" }
+  { titulo: "Programador (orientado a objetos)", folio: "a3d59519-86e4-43cd-93fc-fbe9f4e4e017", qr: "/qr-certificado.png" },
+  { titulo: "Diseñador de experiencia de usuario (UX)", folio: "addd7000-1b96-4e4c-a4e4-d5b50d287350", qr: "/qr-certificado2.png" },
+  { titulo: "Desarrollador de interfaces gráficas", folio: "23a00586-833a-47ce-9c17-6146ccd0e0a8", qr: "/qr-certificado3.png" },
+  { titulo: "Evaluador de experiencia de usuario (UX)", folio: "03761b29-ac6e-407c-b263-d5e53cfb84e7", qr: "/qr-certificado4.png" }
 ];
 
 const habilidadesTecnicas = [
-  "Python", "JavaScript", "HTML/CSS", "Java", "PHP", "Astro", "React", "Laravel", "MySQL", "SQL Server", "GitHub", "VS Code", "Figma"
+  { nombre: "Python", icon: "py", rating: 3 },
+  { nombre: "JavaScript", icon: "js", rating: 3 },
+  { nombre: "HTML/CSS", icon: "html", rating: 3 },
+  { nombre: "Java", icon: "java", rating: 3 },
+  { nombre: "PHP", icon: "php", rating: 3 },
+  { nombre: "Astro", icon: "astro", rating: 3 },
+  { nombre: "React", icon: "react", rating: 3 },
+  { nombre: "Laravel", icon: "laravel", rating: 3 },
+  { nombre: "MySQL", icon: "mysql", rating: 3 },
+  { nombre: "SQL Server", icon: "sqlserver", rating: 3 },
+  { nombre: "GitHub", icon: "github", rating: 3 },
+  { nombre: "VS Code", icon: "vscode", rating: 3 },
+  { nombre: "Figma", icon: "figma", rating: 3 }
 ];
 
 const habilidadesBlandas = [
   "Trabajo en equipo",
-  "Creatividad",
-  "Comunicación",
+  "Creatividad: Diseño de interfaces atractivas",
+  "Comunicación en equipo",
   "Capacidad de organización",
   "Adaptabilidad"
 ];
+
+const proyectos = [
+  "Desarrollo de un sistema de punto de venta en JAVA",
+  "Desarrollo de una página web en Laravel (Backend y Frontend)"
+];
 ---
 
-<main class="cv-container">
+<div class="resume-container">
   <!-- COLUMNA IZQUIERDA -->
-  <aside class="sidebar">
-    <img src={`https://ui-avatars.com/api/?name=${personalInfo.nombre.replace(/ /g, '+')}&background=4f46e5&color=fff&size=200`} alt={personalInfo.nombre} class="profile-image" />
-    <h1>{personalInfo.nombre}</h1>
-    
-    <div class="personal-info">
-      <p><strong>Edad:</strong> {personalInfo.edad}</p>
-      <p><strong>Estado:</strong> {personalInfo.estado}</p>
+  <div class="left-column">
+    <div class="profile-section">
+      <img src={`https://ui-avatars.com/api/?name=${personalInfo.nombre.replace(/ /g, '+')}&background=6b7280&color=fff&size=200`} alt={personalInfo.nombre} class="profile-image" />
+      <h1 class="name">{personalInfo.nombre}</h1>
+
+      <div class="personal-info">
+        <div class="info-item"><span class="info-label">Edad:</span><span>{personalInfo.edad}</span></div>
+        <div class="info-item"><span class="info-label">Estado:</span><span>{personalInfo.estado}</span></div>
+      </div>
     </div>
 
-    <div class="contact">
-      <h3>Contacto</h3>
-      <p>✉️ <a href={`mailto:${personalInfo.email}`}>{personalInfo.email}</a></p>
-      <p>📞 <a href={`tel:${personalInfo.telefono}`}>{personalInfo.telefono}</a></p>
-      <p>🌐 <a href={personalInfo.facebook} target="_blank">Facebook</a></p>
-      <p>💻 <a href={personalInfo.github} target="_blank">GitHub</a></p>
+    <div class="education-section">
+      <h3 class="section-title">Recorrido estudiantil</h3>
+      {estudios.map(est => (
+        <div class="education-item">
+          <div class="education-school">{est.carrera}</div>
+          <div class="education-details">{est.institucion} | {est.periodo}</div>
+        </div>
+      ))}
     </div>
 
-    <a href={personalInfo.cv} download class="download-btn">📥 Descargar CV</a>
-  </aside>
+    <div class="cert-section">
+      <h3 class="section-title">Certificados</h3>
+      {certificados.map(cert => (
+        <div class="cert-item">
+          <strong>{cert.titulo}</strong>
+          <span>Folio: {cert.folio}</span>
+          <span>Completado y aprobado por {personalInfo.nombre}</span>
+          <img src={cert.qr} alt="Código QR Certificado" />
+        </div>
+      ))}
+    </div>
+
+    <div class="contact-section">
+      <h3 class="section-title">Contacto</h3>
+      <div class="contact-item"><div class="contact-icon">@</div><a href={`mailto:${personalInfo.email}`}>{personalInfo.email}</a></div>
+      <div class="contact-item"><div class="contact-icon">📞</div><a href={`tel:${personalInfo.telefono}`}>{personalInfo.telefono}</a></div>
+      <div class="contact-item"><div class="contact-icon">FB</div><a href={personalInfo.facebook} target="_blank">facebook.com/Dulce Maria</a></div>
+      <div class="contact-item"><div class="contact-icon">GH</div><a href={personalInfo.github} target="_blank">github.com/Dulcemaria465</a></div>
+    </div>
+
+    <div class="download-section">
+      <a href={personalInfo.cv} download class="download-btn">📥 Descargar CV</a>
+    </div>
+  </div>
 
   <!-- COLUMNA DERECHA -->
-  <section class="main-content">
-    <section>
-      <h2>Educación</h2>
-      {estudios.map(est => (
-        <div class="card">
-          <p><strong>{est.carrera}</strong></p>
-          <p>{est.institucion} | {est.periodo}</p>
-        </div>
-      ))}
-    </section>
-
-    <section>
-      <h2>Certificados</h2>
-      {certificados.map(cert => (
-        <div class="card">
-          <p><strong>{cert.titulo}</strong></p>
-          <p>Folio: {cert.folio}</p>
-        </div>
-      ))}
-    </section>
-
-    <section>
-      <h2>Habilidades Técnicas</h2>
-      <div class="tags">
-        {habilidadesTecnicas.map(h => <span class="tag">{h}</span>)}
+  <div class="right-column">
+    <div class="skills-obtenidas-section">
+      <h3 class="section-title">Habilidades Obtenidas</h3>
+      <div class="habilidades-tecnicas">
+        <strong>Técnicas</strong>
+        <ul>
+          {proyectos.map(p => <li>{p}</li>)}
+        </ul>
       </div>
-    </section>
-
-    <section>
-      <h2>Habilidades Blandas</h2>
-      <div class="tags soft-tags">
-        {habilidadesBlandas.map(h => <span class="tag">{h}</span>)}
+      <div class="habilidades-blandas">
+        <strong>Blandas</strong>
+        <ul>
+          {habilidadesBlandas.map(h => <li>{h}</li>)}
+        </ul>
       </div>
-    </section>
-  </section>
-</main>
+    </div>
+
+    <div class="skills-section">
+      <h3 class="section-title">Habilidades Técnicas</h3>
+      <div class="skills-list">
+        {habilidadesTecnicas.map(skill => (
+          <div class="skill-item">
+            <div class={`skill-icon ${skill.icon.toLowerCase()}`}>{skill.icon}</div>
+            <div class="skill-name">{skill.nombre}</div>
+            <div class="skill-rating">
+              {Array.from({ length: 5 }, (_, i) => (
+                <div class={`rating-dot ${i < skill.rating ? "filled" : ""}`}></div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
 
 <style>
-body {
-  font-family: 'Inter', sans-serif;
-  background: #f3f4f6;
-  color: #1f2937;
-  margin: 0;
-  padding: 0;
-}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Inter',sans-serif; background:#f5f1eb; color:#4a4a4a; line-height:1.6; }
 
-.cv-container {
-  max-width: 1100px;
-  margin: 40px auto;
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  gap: 40px;
-}
+.resume-container { max-width:1200px; margin:auto; padding:40px 20px; display:grid; grid-template-columns:1fr 2fr; gap:50px; }
+.left-column, .right-column { display:flex; flex-direction:column; gap:30px; }
 
-/* Sidebar */
-.sidebar {
-  background: #fff;
-  border-radius: 16px;
-  padding: 24px;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
+.profile-section{text-align:center;}
+.profile-image{width:160px;height:160px;border-radius:50%;object-fit:cover;margin:0 auto 15px;}
+.name{font-size:2rem;font-weight:700;color:#6b7280;}
+.personal-info{display:flex;flex-direction:column;gap:10px;margin-top:15px;}
+.info-item{display:flex;align-items:center;gap:10px;}
+.info-label{font-weight:600;color:#6b7280;min-width:80px;}
 
-.profile-image {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  margin-bottom: 15px;
-  object-fit: cover;
-}
+.section-title{font-size:1.6rem;font-weight:700;color:#6b7280;margin-bottom:15px;border-bottom:2px solid #d1d5db;padding-bottom:8px;}
+.education-item, .contact-item, .cert-item{margin-bottom:15px;}
+.education-school{color:#9ca3af;font-size:0.95rem;}
 
-h1 {
-  font-size: 1.9rem;
-  color: #4f46e5;
-  margin-bottom: 15px;
-}
+.contact-item{display:flex;align-items:center;gap:12px;padding:8px;background:rgba(255,255,255,0.3);border-radius:6px;}
+.contact-icon{width:28px;height:28px;background:#6b7280;border-radius:6px;display:flex;align-items:center;justify-content:center;color:white;font-size:13px;}
 
-.personal-info p {
-  margin: 6px 0;
-}
+.cert-section{display:flex;flex-direction:column;gap:12px;}
+.cert-item{padding:12px;border:1px solid #d1d5db;border-radius:10px;background:#fff;display:flex;flex-direction:column;align-items:center;}
+.cert-item img{width:110px;margin-top:10px;}
 
-.contact h3 {
-  margin-top: 20px;
-  color: #4f46e5;
-}
+.skills-list{display:flex;flex-direction:column;gap:14px;}
+.skill-item{display:flex;align-items:center;gap:12px;}
+.skill-icon{width:32px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:12px;color:white;}
+.skill-name{flex:1;font-weight:500;color:#6b7280;}
+.skill-rating{display:flex;gap:4px;}
+.rating-dot{width:10px;height:10px;border-radius:50%;background:#d1d5db;}
+.rating-dot.filled{background:#6b7280;}
 
-.contact p a {
-  color: #1f2937;
-  text-decoration: none;
-}
-.contact p a:hover {
-  text-decoration: underline;
-}
+/* Colores */
+.py { background: #3776AB; }
+.java { background: #f89820; }
+.laravel { background: #ff2d20; }
+.mysql { background: #00758f; }
+.sqlserver { background: #a91d22; }
+.js { background: #f7df1e; color: #222; }
+.html { background: #e34c26; }
+.php { background: #777bb4; }
+.astro { background: #1a1a1a; }
+.react { background: #61dafb; color: #222; }
+.github { background: #333; }
+.vscode { background: #0078d7; }
+.figma { background: #f24e1e; }
 
-.download-btn {
-  display: inline-block;
-  margin-top: 20px;
-  background: #4f46e5;
-  color: white;
-  text-decoration: none;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: 0.3s;
-}
-.download-btn:hover {
-  background: #3730a3;
-}
+.download-section{text-align:center;}
+.download-btn{display:inline-block;background:#6b7280;color:white;font-weight:600;text-decoration:none;padding:12px 20px;border-radius:8px;transition:0.3s;}
+.download-btn:hover{background:#4b5563;}
 
-/* Main content */
-.main-content {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-}
-
-h2 {
-  font-size: 1.5rem;
-  color: #4f46e5;
-  margin-bottom: 12px;
-  border-bottom: 2px solid #e5e7eb;
-  padding-bottom: 6px;
-}
-
-.card {
-  background: #fff;
-  padding: 15px 20px;
-  border-radius: 12px;
-  margin-bottom: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-.tag {
-  background: #e0e7ff;
-  color: #3730a3;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 0.9rem;
-}
-.soft-tags .tag {
-  background: #d1fae5;
-  color: #065f46;
-}
-
-/* Responsive */
-@media(max-width: 900px){
-  .cv-container {
-    grid-template-columns: 1fr;
-    gap: 30px;
-    padding: 0 15px;
-  }
-  .sidebar {
-    width: 100%;
-  }
+@media (max-width:992px){
+.resume-container{grid-template-columns:1fr;gap:30px;padding:30px 15px;}
+.profile-image{width:140px;height:140px;}
+.name{font-size:1.8rem;}
+.section-title{font-size:1.4rem;}
 }
 </style>
