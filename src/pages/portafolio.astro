@@ -1,0 +1,324 @@
+---
+// Puedes importar la info desde un archivo JS/TS si prefieres reutilizar datos
+const personalInfo = {
+  nombre: "Dulce Maria Del Angel Del Angel",
+  edad: "20 años",
+  estado: "Tamaulipas",
+  email: "delangeldulce29@gmail.com",
+  telefono: "833 383 5762",
+  facebook: "https://www.facebook.com/share/1ZfsC6Mi8N/",
+  github: "https://github.com/Dulcemaria465",
+  cv: "/CV-Dulce.pdf"
+};
+
+const estudios = [
+  { carrera: "Ingeniería en Sistemas Computacionales", institucion: "UAT", periodo: "2023 - Presente" },
+  { carrera: "Técnico en Programación", institucion: "ITACE", periodo: "2020 - 2023" }
+];
+
+const certificados = [
+  { titulo: "Programador (orientado a objetos)", folio: "a3d59519-86e4-43cd-93fc-fbe9f4e4e017", qr: "/qr-certificado.png" },
+  { titulo: "Diseñador de experiencia de usuario (UX)", folio: "addd7000-1b96-4e4c-a4e4-d5b50d287350", qr: "/qr-certificado2.png" },
+  { titulo: "Desarrollador de interfaces gráficas", folio: "23a00586-833a-47ce-9c17-6146ccd0e0a8", qr: "/qr-certificado3.png" },
+  { titulo: "Evaluador de experiencia de usuario (UX)", folio: "03761b29-ac6e-407c-b263-d5e53cfb84e7", qr: "/qr-certificado4.png" }
+];
+
+const habilidadesTecnicas = [
+  { nombre: "Python", icon: "py", rating: 3 },
+  { nombre: "JavaScript", icon: "js", rating: 3 },
+  { nombre: "HTML/CSS", icon: "html", rating: 3 },
+  { nombre: "Java", icon: "java", rating: 3 },
+  { nombre: "PHP", icon: "php", rating: 3 },
+  { nombre: "Astro", icon: "astro", rating: 3 },
+  { nombre: "React", icon: "react", rating: 3 },
+  { nombre: "Laravel", icon: "laravel", rating: 3 },
+  { nombre: "MySQL", icon: "mysql", rating: 3 },
+  { nombre: "SQL Server", icon: "sqlserver", rating: 3 },
+  { nombre: "GitHub", icon: "github", rating: 3 },
+  { nombre: "VS Code", icon: "vscode", rating: 3 },
+  { nombre: "Figma", icon: "figma", rating: 3 }
+];
+
+const habilidadesBlandas = [
+  "Trabajo en equipo",
+  "Creatividad: Diseño de interfaces atractivas",
+  "Comunicación en equipo",
+  "Capacidad de organización",
+  "Adaptabilidad"
+];
+
+const proyectos = [
+  {
+    nombre: "Sistema de punto de venta",
+    descripcion: "Desarrollo de un sistema de punto de venta en JAVA.",
+    tecnologias: ["Java"]
+  },
+  {
+    nombre: "Página web en Laravel",
+    descripcion: "Desarrollo de una página web en Laravel (Backend y Frontend).",
+    tecnologias: ["Laravel", "PHP", "HTML/CSS"]
+  }
+];
+---
+
+<main class="portfolio-container">
+  <aside class="sidebar">
+    <img src={`https://ui-avatars.com/api/?name=${personalInfo.nombre.replace(/ /g, '+')}&background=6b7280&color=fff&size=200`} alt={personalInfo.nombre} class="profile-image" />
+    <h1>{personalInfo.nombre}</h1>
+    <p class="subtitle">Estudiante de Ingeniería en Sistemas Computacionales</p>
+    <div class="contact-list">
+      <a href={`mailto:${personalInfo.email}`} class="contact-link">@ {personalInfo.email}</a>
+      <a href={`tel:${personalInfo.telefono}`} class="contact-link">📞 {personalInfo.telefono}</a>
+      <a href={personalInfo.facebook} class="contact-link" target="_blank">FB Dulce Maria</a>
+      <a href={personalInfo.github} class="contact-link" target="_blank">GH Dulcemaria465</a>
+    </div>
+    <a href={personalInfo.cv} download class="download-btn">📥 Descargar CV en PDF</a>
+  </aside>
+
+  <section class="main-content">
+    <section>
+      <h2>Sobre mí</h2>
+      <p>
+        Soy estudiante de Ingeniería en Sistemas Computacionales en la Universidad Autónoma de Tamaulipas. Me apasiona el desarrollo de software, el diseño de interfaces y la tecnología. Busco seguir aprendiendo y aportar mis conocimientos en proyectos innovadores.
+      </p>
+    </section>
+
+    <section>
+      <h2>Recorrido estudiantil</h2>
+      {estudios.map(est => (
+        <div class="education-item">
+          <div class="education-title">{est.carrera}</div>
+          <div class="education-details">{est.institucion} | {est.periodo}</div>
+        </div>
+      ))}
+    </section>
+
+    <section>
+      <h2>Certificados</h2>
+      <div class="certificados-list">
+        {certificados.map(cert => (
+          <div class="cert-card">
+            <strong>{cert.titulo}</strong>
+            <span>Folio: {cert.folio}</span>
+            <img src={cert.qr} alt="QR Certificado" />
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section>
+      <h2>Proyectos destacados</h2>
+      <div class="proyectos-list">
+        {proyectos.map(proj => (
+          <div class="proyecto-card">
+            <h3>{proj.nombre}</h3>
+            <p>{proj.descripcion}</p>
+            <div class="proyecto-tecnologias">
+              {proj.tecnologias.map(tec => (
+                <span class="tec">{tec}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section>
+      <h2>Habilidades Técnicas</h2>
+      <div class="skills-list">
+        {habilidadesTecnicas.map(skill => (
+          <div class="skill-item">
+            <div class={`skill-icon ${skill.icon.toLowerCase()}`}>{skill.icon}</div>
+            <div class="skill-name">{skill.nombre}</div>
+            <div class="skill-rating">
+              {Array.from({ length: 5 }, (_, i) => (
+                <div class={`rating-dot ${i < skill.rating ? "filled" : ""}`}></div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section>
+      <h2>Habilidades Blandas</h2>
+      <ul class="soft-skills">
+        {habilidadesBlandas.map(h => <li>{h}</li>)}
+      </ul>
+    </section>
+  </section>
+</main>
+
+<style>
+.portfolio-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 40px auto;
+  gap: 40px;
+  font-family: 'Inter', sans-serif;
+}
+.sidebar {
+  flex: 0 0 320px;
+  background: #f5f1eb;
+  border-radius: 16px;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  box-shadow: 0 2px 12px #0001;
+}
+.profile-image {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+.subtitle {
+  color: #6b7280;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+.contact-link {
+  color: #374151;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 6px 0;
+  transition: color 0.2s;
+}
+.contact-link:hover {
+  color: #ff2d20;
+}
+.download-btn {
+  margin-top: 18px;
+  background: #6b7280;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.download-btn:hover {
+  background: #374151;
+}
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+section {
+  background: #fff;
+  border-radius: 12px;
+  padding: 28px 24px;
+  box-shadow: 0 2px 8px #0001;
+}
+.education-item {
+  margin-bottom: 12px;
+}
+.education-title {
+  font-weight: 600;
+  color: #6b7280;
+  font-size: 1.1rem;
+}
+.education-details {
+  color: #9ca3af;
+  font-size: 0.95rem;
+}
+.certificados-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+.cert-card {
+  background: #f5f1eb;
+  border-radius: 10px;
+  padding: 16px;
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 1px 4px #0001;
+}
+.cert-card img {
+  width: 90px;
+  margin-top: 6px;
+}
+.proyectos-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.proyecto-card {
+  background: #f5f1eb;
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 1px 4px #0001;
+}
+.proyecto-tecnologias {
+  margin-top: 8px;
+  display: flex;
+  gap: 8px;
+}
+.tec {
+  background: #6b7280;
+  color: #fff;
+  border-radius: 6px;
+  padding: 2px 10px;
+  font-size: 0.9rem;
+}
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.skill-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 210px;
+  margin-bottom: 8px;
+}
+.skill-icon {
+  width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px; color: white;
+}
+.skill-name { flex: 1; font-weight: 500; color: #6b7280; }
+.skill-rating { display: flex; gap: 4px; }
+.rating-dot { width: 10px; height: 10px; border-radius: 50%; background: #d1d5db; }
+.rating-dot.filled { background: #6b7280; }
+.py { background: #3776AB; }
+.java { background: #f89820; }
+.laravel { background: #ff2d20; }
+.mysql { background: #00758f; }
+.sqlserver { background: #a91d22; }
+.js { background: #f7df1e; color: #222; }
+.html { background: #e34c26; }
+.php { background: #777bb4; }
+.astro { background: #1a1a1a; }
+.react { background: #61dafb; color: #222; }
+.github { background: #333; }
+.vscode { background: #0078d7; }
+.figma { background: #f24e1e; }
+.soft-skills {
+  margin: 0;
+  padding-left: 18px;
+}
+.soft-skills li {
+  margin-bottom: 6px;
+}
+@media (max-width: 900px) {
+  .portfolio-container { flex-direction: column; gap: 24px; }
+  .sidebar { width: 100%; max-width: 100%; }
