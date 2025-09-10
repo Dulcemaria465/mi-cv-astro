@@ -1,5 +1,5 @@
 ---
-// Puedes importar la info desde un archivo JS/TS si prefieres reutilizar datos
+// Importa los datos si los quieres mantener en un archivo separado
 const personalInfo = {
   nombre: "Dulce Maria Del Angel Del Angel",
   edad: "20 años",
@@ -62,28 +62,35 @@ const proyectos = [
 ---
 
 <main class="portfolio-container">
+  <!-- Sidebar -->
   <aside class="sidebar">
     <img src={`https://ui-avatars.com/api/?name=${personalInfo.nombre.replace(/ /g, '+')}&background=6b7280&color=fff&size=200`} alt={personalInfo.nombre} class="profile-image" />
     <h1>{personalInfo.nombre}</h1>
     <p class="subtitle">Estudiante de Ingeniería en Sistemas Computacionales</p>
+
     <div class="contact-list">
-      <a href={`mailto:${personalInfo.email}`} class="contact-link">@ {personalInfo.email}</a>
+      <a href={`mailto:${personalInfo.email}`} class="contact-link">📧 {personalInfo.email}</a>
       <a href={`tel:${personalInfo.telefono}`} class="contact-link">📞 {personalInfo.telefono}</a>
-      <a href={personalInfo.facebook} class="contact-link" target="_blank">FB Dulce Maria</a>
-      <a href={personalInfo.github} class="contact-link" target="_blank">GH Dulcemaria465</a>
+      <a href={personalInfo.facebook} class="contact-link" target="_blank">Facebook</a>
+      <a href={personalInfo.github} class="contact-link" target="_blank">GitHub</a>
     </div>
-    <a href={personalInfo.cv} download class="download-btn">📥 Descargar CV en PDF</a>
+
+    <a href={personalInfo.cv} download class="download-btn">📥 Descargar CV</a>
   </aside>
 
+  <!-- Main content -->
   <section class="main-content">
-    <section>
+    
+    <!-- Sobre mí -->
+    <section class="about-me">
       <h2>Sobre mí</h2>
       <p>
         Soy estudiante de Ingeniería en Sistemas Computacionales en la Universidad Autónoma de Tamaulipas. Me apasiona el desarrollo de software, el diseño de interfaces y la tecnología. Busco seguir aprendiendo y aportar mis conocimientos en proyectos innovadores.
       </p>
     </section>
 
-    <section>
+    <!-- Educación -->
+    <section class="education">
       <h2>Recorrido estudiantil</h2>
       {estudios.map(est => (
         <div class="education-item">
@@ -93,20 +100,22 @@ const proyectos = [
       ))}
     </section>
 
-    <section>
+    <!-- Certificados -->
+    <section class="certificates">
       <h2>Certificados</h2>
       <div class="certificados-list">
         {certificados.map(cert => (
           <div class="cert-card">
             <strong>{cert.titulo}</strong>
             <span>Folio: {cert.folio}</span>
-            <img src={cert.qr} alt="QR Certificado" />
+            <img src={cert.qr} alt={`QR de ${cert.titulo}`} />
           </div>
         ))}
       </div>
     </section>
 
-    <section>
+    <!-- Proyectos -->
+    <section class="projects">
       <h2>Proyectos destacados</h2>
       <div class="proyectos-list">
         {proyectos.map(proj => (
@@ -114,16 +123,15 @@ const proyectos = [
             <h3>{proj.nombre}</h3>
             <p>{proj.descripcion}</p>
             <div class="proyecto-tecnologias">
-              {proj.tecnologias.map(tec => (
-                <span class="tec">{tec}</span>
-              ))}
+              {proj.tecnologias.map(tec => <span class="tec">{tec}</span>)}
             </div>
           </div>
         ))}
       </div>
     </section>
 
-    <section>
+    <!-- Habilidades técnicas -->
+    <section class="skills">
       <h2>Habilidades Técnicas</h2>
       <div class="skills-list">
         {habilidadesTecnicas.map(skill => (
@@ -140,12 +148,14 @@ const proyectos = [
       </div>
     </section>
 
-    <section>
+    <!-- Habilidades blandas -->
+    <section class="soft-skills-section">
       <h2>Habilidades Blandas</h2>
       <ul class="soft-skills">
         {habilidadesBlandas.map(h => <li>{h}</li>)}
       </ul>
     </section>
+
   </section>
 </main>
 
@@ -167,158 +177,56 @@ const proyectos = [
   align-items: center;
   gap: 18px;
   box-shadow: 0 2px 12px #0001;
+  text-align: center;
 }
 .profile-image {
   width: 140px;
   height: 140px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 10px;
 }
-.subtitle {
-  color: #6b7280;
-  font-size: 1.1rem;
-  margin-bottom: 10px;
-  text-align: center;
-}
-.contact-list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  width: 100%;
-}
-.contact-link {
-  color: #374151;
-  text-decoration: none;
-  font-size: 1rem;
-  padding: 6px 0;
-  transition: color 0.2s;
-}
-.contact-link:hover {
-  color: #ff2d20;
-}
+.subtitle { color: #6b7280; font-size: 1.1rem; margin-bottom: 10px; }
+.contact-list { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+.contact-link { color: #374151; text-decoration: none; transition: color 0.2s; }
+.contact-link:hover { color: #ff2d20; }
 .download-btn {
-  margin-top: 18px;
-  background: #6b7280;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 12px 24px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background 0.2s;
+  margin-top: 16px;
+  background: #6b7280; color: #fff;
+  border-radius: 8px; padding: 12px 24px;
+  font-weight: 600; text-decoration: none; display: inline-block;
 }
-.download-btn:hover {
-  background: #374151;
-}
-.main-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-}
-section {
-  background: #fff;
-  border-radius: 12px;
-  padding: 28px 24px;
-  box-shadow: 0 2px 8px #0001;
-}
-.education-item {
-  margin-bottom: 12px;
-}
-.education-title {
-  font-weight: 600;
-  color: #6b7280;
-  font-size: 1.1rem;
-}
-.education-details {
-  color: #9ca3af;
-  font-size: 0.95rem;
-}
-.certificados-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
-}
-.cert-card {
-  background: #f5f1eb;
-  border-radius: 10px;
-  padding: 16px;
-  min-width: 180px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  box-shadow: 0 1px 4px #0001;
-}
-.cert-card img {
-  width: 90px;
-  margin-top: 6px;
-}
-.proyectos-list {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-.proyecto-card {
-  background: #f5f1eb;
-  border-radius: 10px;
-  padding: 16px;
-  box-shadow: 0 1px 4px #0001;
-}
-.proyecto-tecnologias {
-  margin-top: 8px;
-  display: flex;
-  gap: 8px;
-}
-.tec {
-  background: #6b7280;
-  color: #fff;
-  border-radius: 6px;
-  padding: 2px 10px;
-  font-size: 0.9rem;
-}
-.skills-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-}
-.skill-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  min-width: 210px;
-  margin-bottom: 8px;
-}
-.skill-icon {
-  width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px; color: white;
-}
+.download-btn:hover { background: #374151; cursor: pointer; }
+.main-content { flex: 1; display: flex; flex-direction: column; gap: 32px; }
+
+section { background: #fff; border-radius: 12px; padding: 28px 24px; box-shadow: 0 2px 8px #0001; }
+.education-item { margin-bottom: 12px; }
+.education-title { font-weight: 600; color: #6b7280; font-size: 1.1rem; }
+.education-details { color: #9ca3af; font-size: 0.95rem; }
+.certificados-list { display: flex; flex-wrap: wrap; gap: 18px; }
+.cert-card { background: #f5f1eb; border-radius: 10px; padding: 16px; min-width: 180px; text-align: center; }
+.cert-card img { width: 90px; margin-top: 6px; }
+.proyectos-list { display: flex; flex-direction: column; gap: 18px; }
+.proyecto-card { background: #f5f1eb; border-radius: 10px; padding: 16px; }
+.proyecto-tecnologias { margin-top: 8px; display: flex; gap: 8px; flex-wrap: wrap; }
+.tec { background: #6b7280; color: #fff; border-radius: 6px; padding: 2px 10px; font-size: 0.9rem; }
+
+.skills-list { display: flex; flex-wrap: wrap; gap: 14px; }
+.skill-item { display: flex; align-items: center; gap: 10px; min-width: 210px; margin-bottom: 8px; }
+.skill-icon { width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px; color: white; }
 .skill-name { flex: 1; font-weight: 500; color: #6b7280; }
 .skill-rating { display: flex; gap: 4px; }
 .rating-dot { width: 10px; height: 10px; border-radius: 50%; background: #d1d5db; }
 .rating-dot.filled { background: #6b7280; }
-.py { background: #3776AB; }
-.java { background: #f89820; }
-.laravel { background: #ff2d20; }
-.mysql { background: #00758f; }
-.sqlserver { background: #a91d22; }
-.js { background: #f7df1e; color: #222; }
-.html { background: #e34c26; }
-.php { background: #777bb4; }
-.astro { background: #1a1a1a; }
-.react { background: #61dafb; color: #222; }
-.github { background: #333; }
-.vscode { background: #0078d7; }
-.figma { background: #f24e1e; }
-.soft-skills {
-  margin: 0;
-  padding-left: 18px;
-}
-.soft-skills li {
-  margin-bottom: 6px;
-}
+.py { background: #3776AB; } .java { background: #f89820; } .laravel { background: #ff2d20; }
+.mysql { background: #00758f; } .sqlserver { background: #a91d22; } .js { background: #f7df1e; color: #222; }
+.html { background: #e34c26; } .php { background: #777bb4; } .astro { background: #1a1a1a; } .react { background: #61dafb; color: #222; }
+.github { background: #333; } .vscode { background: #0078d7; } .figma { background: #f24e1e; }
+
+.soft-skills { margin: 0; padding-left: 18px; }
+.soft-skills li { margin-bottom: 6px; }
+
 @media (max-width: 900px) {
   .portfolio-container { flex-direction: column; gap: 24px; }
   .sidebar { width: 100%; max-width: 100%; }
+}
+</style>
